@@ -26,6 +26,7 @@ public class Stade {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "stade")
+    @JsonIgnore
     private List<Partido> partidos;
 
 }

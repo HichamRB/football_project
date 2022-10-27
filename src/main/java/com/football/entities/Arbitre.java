@@ -1,5 +1,6 @@
 package com.football.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,11 @@ public class Arbitre {
     String nom;
     @Column
     String Nationalite;
+
+    @JsonIgnore
+    @JsonManagedReference
+    @OneToMany(mappedBy = "arbitre")
+    private List<Partido> partidos;
 
 }
 

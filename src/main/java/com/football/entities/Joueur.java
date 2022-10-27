@@ -1,5 +1,7 @@
 package com.football.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +18,11 @@ public class Joueur {
     String nomJoueur;
     @Column
     String poste;
+
+    @JsonIgnore
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "equipe_id")
+    private Equipe equipe;
 
 }
