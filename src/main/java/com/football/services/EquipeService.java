@@ -37,4 +37,9 @@ public class EquipeService {
 
         return equipeService.save(equipe);
     }
-}
+
+    public List<Equipe> findByPays(String pays) {
+        return equipeService.findByPays(pays);
+    }
+
+    }

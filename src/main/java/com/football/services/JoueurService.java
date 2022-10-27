@@ -1,6 +1,7 @@
 package com.football.services;
 
 
+import com.football.entities.Equipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.football.repository.JoueurRepository;
@@ -36,5 +37,9 @@ public class JoueurService {
     public Joueur updateJoueur(Joueur joueur){
         return
                 joueurRepository.save(joueur);
+    }
+
+    public List<Joueur> findByPosteAndEquipe(String poste, Equipe equipe) {
+        return joueurRepository.findByPosteAndEquipe(poste, equipe);
     }
 }

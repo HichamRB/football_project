@@ -47,5 +47,12 @@ public class EquipeController {
 
         return equipeService.updateEquipe(equipe);
     }
-}
+    @GetMapping("Equipes/{pays}")
+    public List<Equipe> findByPays(@PathVariable String pays){
+
+        return equipeService.findByPays(pays);
+    }
+
+
+    }
 
