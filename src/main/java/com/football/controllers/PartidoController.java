@@ -1,10 +1,14 @@
 package com.football.controllers;
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import com.football.entities.Equipe;
+import com.football.entities.Joueur;
 import com.football.entities.Partido;
+import com.football.entities.Stade;
 import com.football.services.PartidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -46,6 +50,21 @@ public class PartidoController {
     public Partido updatePartido(@RequestBody Partido partido){
 
         return partidoService.updatePartido(partido);
+    }
+
+    @GetMapping("DateMatch")
+    public List<Partido> findByDateMatch(){
+
+        return partidoService.findByDateMatch(LocalDate.parse("2021-02-28"));
+    }
+
+    @DeleteMapping("delete")
+    public void findByDateMatchBefore(){
+        List<Partido> matchFoots = partidoService.findByDateMatchBefore(LocalDate.now());
+        matchFoots.forEach((matchFound) -> {
+            partidoService.deleteById(matchFound.getId());
+        });
+        System.out.println(partidoService.findAll());
     }
 }
 

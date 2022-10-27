@@ -24,9 +24,10 @@ public class Arbitre {
     @Column
     String Nationalite;
 
-    @JsonIgnore
+
     @JsonManagedReference
     @OneToMany(mappedBy = "arbitre")
+    @JsonIgnore
     private List<Partido> partidos;
 
 }

@@ -42,4 +42,5 @@ public class JoueurService {
     public List<Joueur> findByPosteAndEquipe(String poste, Equipe equipe) {
         return joueurRepository.findByPosteAndEquipe(poste, equipe);
     }
-}
+
+    }

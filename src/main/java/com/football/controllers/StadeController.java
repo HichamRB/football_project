@@ -4,7 +4,11 @@ package com.football.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import com.football.entities.Equipe;
+import com.football.entities.Joueur;
+import com.football.entities.Partido;
 import com.football.entities.Stade;
+import com.football.services.PartidoService;
 import com.football.services.StadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +25,9 @@ public class StadeController {
 
     @Autowired
     StadeService stadeService;
+
+    @Autowired
+    PartidoService partidoService;
 
     @GetMapping("Stades")
     public List<Stade> getAllStades(){
@@ -48,4 +55,13 @@ public class StadeController {
 
         return stadeService.updateStade(stade);
     }
+
+    @GetMapping("stade3")
+    public String findStadePartido(){
+        Stade stade = partidoService.findById(3L).getStade();
+        return stade.getNomStade();
+    }
 }
+
+
+

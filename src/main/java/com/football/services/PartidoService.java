@@ -29,9 +29,19 @@ public class PartidoService {
         return partidoRepository.save(partido);
     }
 
+    public Partido findById(Long id) {
+        return partidoRepository.findById(id).orElseThrow(() -> new RuntimeException("match not found"));
+    }
+
     public void deletePartido(Long id){
 
         partidoRepository.deleteById(id);
+    }
+    public void deleteById(Long id) {
+        partidoRepository.deleteById(id);
+    }
+    public List<Partido> findAll() {
+        return partidoRepository.findAll();
     }
     public Optional<Partido> getPartidoById(Long id) {
 
@@ -42,6 +52,7 @@ public class PartidoService {
         return      partidoRepository.save(partido);
     }
     public List<Partido> findByDateMatch(LocalDate dateMatch) {
+
         return partidoRepository.findByDateMatch(dateMatch);
     }
 

@@ -39,4 +39,10 @@ public class StadeService {
 
         return    stadeRepository.save(stade);
     }
+    public Optional<Stade> findById(Long id) {
+        return stadeRepository.findById(id);
+    }
 }
+
+
+

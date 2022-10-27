@@ -4,7 +4,9 @@ package com.football.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import com.football.entities.Equipe;
 import com.football.entities.Joueur;
+import com.football.services.EquipeService;
 import com.football.services.JoueurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +23,9 @@ public class JoueurController {
 
     @Autowired
     JoueurService joueurService;
+
+    @Autowired
+    EquipeService equipeService;
 
     @GetMapping("Joueurs")
     public List<Joueur> getAllJoueurs() {
@@ -51,4 +56,17 @@ public class JoueurController {
 
         return joueurService.updateJoueur(joueur);
     }
+
+    @GetMapping("ATLMADRID")
+    public List<Joueur> findByNomEquipe(){
+        Equipe equipe = equipeService.findByNomEquipe("ATLMADRID");
+        return equipe.getJoueurs();
+    }
+    @GetMapping("attaquant")
+    public List<Joueur> findByPosteAndEquipe(){
+        Equipe equipe1 = equipeService.findByNomEquipe("PSG");
+        return joueurService.findByPosteAndEquipe("attaquant", equipe1);
+    }
+
+
 }

@@ -19,10 +19,10 @@ public class Joueur {
     @Column
     String poste;
 
-    @JsonIgnore
+
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "equipe_id")
+    @JsonIgnore
     private Equipe equipe;
 
 }

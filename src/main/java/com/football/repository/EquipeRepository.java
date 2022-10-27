@@ -13,6 +13,5 @@ public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 
     public List<Equipe> findByPays(String pays);
 
-    public Equipe findByNom(String nomEquipe);
-
+    public Equipe findByNomEquipe(String nomEquipe);
 }

@@ -42,4 +42,9 @@ public class EquipeService {
         return equipeService.findByPays(pays);
     }
 
+    public Equipe findByNomEquipe(String nomEquipe) {
+
+        return equipeService.findByNomEquipe(nomEquipe);
     }
+
+}
