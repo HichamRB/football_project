@@ -6,8 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,9 +21,11 @@ public class Partido {
     @Id
     long id;
     @Column
-    String dateMatch;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate dateMatch;
     @Column
-    String heureMatch;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime heureMatch;
 
     @JsonIgnore
     @ManyToOne
