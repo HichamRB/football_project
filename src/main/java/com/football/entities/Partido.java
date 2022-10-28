@@ -27,18 +27,19 @@ public class Partido {
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime heureMatch;
 
-    @JsonIgnore
+
     @ManyToOne
     @JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "arbitre_id")
         private Arbitre arbitre;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
     @JoinColumn(name = "stade_id")
     private Stade stade;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "partido_equipe", joinColumns = {@JoinColumn(name = "partido_id")}, inverseJoinColumns = {@JoinColumn(name = "equipe_id")})
     private List<Equipe> equipes;
 
